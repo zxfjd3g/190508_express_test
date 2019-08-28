@@ -1,5 +1,5 @@
 # 1. express的理解
-    用来快速搭建后台路由的web框架
+    用来快速搭建后台路由的web框架(库)
     它本身的功能非常简单, 需要通过其中间件来扩展其功能
 
 # 2. express的基本使用
@@ -22,13 +22,15 @@
         params	包含get请求的所有param参数的对象
         body	包含post请求的所有请求参数的对象
         cookies	包含所有请求携带cookie数据的对象
+        method: 请求方式
+        get(header): 根据请求头的名称得到对应的值
 
     2). response对象
-        response对象是路由回调函数中的第二个参数，代表了服务器发送给用户的响应信息
+        response对象是路由回调函数中的第二个参数，代表了服务器发送给用户的响应
         res.send(body)	返回响应体
         res.json(obj/array)	以json格式返回响应体
         res.redirect(path)	重定向到指定路径
-        render(viewName, dataObj)	渲染模板后返回
+        res.render(viewName, dataObj)	渲染模板后返回
     3). GET请求的2种参数
         query参数:
             路由path: /xxx
@@ -55,9 +57,12 @@
         1)内置中间件
             express.static(rootPath): 指定静态资源根路径的中间件
             express.Router(): 路由器中间件
+            express.urlencoded()
+            express.json()
         2)第三方中间件
             body-parser: 解析post请求体的中间件
             cookie-parser: 解析cookie的中间件
+            express-session: 处理session的中间件
         3)自定义中间件
             function xxx (req, res. next) {}
     4). 声明使用中间件
